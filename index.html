@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A choice-based open-source maintainer simulator for learning triage, review, release, and security tradeoffs."
+    />
+    <title>Maintainer Quest</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="game-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Open-source maintenance simulator</p>
+          <h1 id="game-title">Maintainer Quest</h1>
+          <p class="lede">
+            Run a 12-week open-source release campaign. Balance users,
+            contributors, security, governance, funding, and your own energy.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" id="start-button" type="button">Start run</button>
+            <button class="secondary" id="reset-button" type="button">Reset</button>
+          </div>
+        </div>
+
+        <div class="project-map" aria-hidden="true">
+          <div class="node node-core">core</div>
+          <div class="node node-pr">PR</div>
+          <div class="node node-sec">sec</div>
+          <div class="node node-docs">docs</div>
+          <div class="path path-a"></div>
+          <div class="path path-b"></div>
+          <div class="path path-c"></div>
+        </div>
+      </section>
+
+      <section class="dashboard" aria-label="Game dashboard">
+        <aside class="status-panel" aria-label="Project status">
+          <div class="status-heading">
+            <p class="eyebrow">Project health</p>
+            <strong id="chapter-label">Awaiting first decision</strong>
+          </div>
+          <div class="campaign-progress" aria-label="Campaign progress">
+            <div class="meter-row">
+              <span class="meter-name">Campaign</span>
+              <span class="meter-value" id="progress-label">0/12</span>
+            </div>
+            <div class="meter-track"><div class="meter-fill" id="progress-fill"></div></div>
+          </div>
+          <div class="meters" id="meters"></div>
+          <div class="assets" aria-label="Project assets">
+            <p class="eyebrow">Assets</p>
+            <div id="asset-list"></div>
+          </div>
+          <div class="run-facts">
+            <span><b id="week-count">0</b> weeks</span>
+            <span><b id="decision-count">0</b> decisions</span>
+          </div>
+        </aside>
+
+        <article class="story-panel" aria-live="polite">
+          <p class="scene-tag" id="scene-tag">Inbox</p>
+          <h2 id="scene-title">A repository wakes up</h2>
+          <p id="scene-body">
+            Your issue tracker is quiet for now. Start a run to face the first
+            maintainer choice.
+          </p>
+          <div class="scene-meta" id="scene-meta"></div>
+          <div class="last-result" id="last-result" hidden></div>
+          <div class="choices" id="choices"></div>
+        </article>
+
+        <aside class="log-panel" aria-label="Decision log">
+          <div class="status-heading">
+            <p class="eyebrow">Run log</p>
+            <strong>Evidence trail</strong>
+          </div>
+          <ol id="log-list"></ol>
+          <button class="secondary wide" id="copy-summary" type="button">
+            Copy summary
+          </button>
+        </aside>
+      </section>
+    </main>
+
+    <template id="meter-template">
+      <div class="meter">
+        <div class="meter-row">
+          <span class="meter-name"></span>
+          <span class="meter-value"></span>
+        </div>
+        <div class="meter-track"><div class="meter-fill"></div></div>
+      </div>
+    </template>
+
+    <script src="src/game.js"></script>
+  </body>
+</html>
